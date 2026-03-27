@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" type="text/css" href="styles.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hypixel Status</title>
+  <script defer src="status.js"></script>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <ul>
+        <li><a href="main.html">Home</a></li>
+        <li><a href="api_documentation.html">API Docs</a></li>
+        <li><a href="status.html">Hypixel Status</a></li>
+      </ul>
+    </nav>
+
+    <main class="statusWrap">
+      <div class="statusHeader">
+        <h1>Hypixel API Status</h1>
+        <button id="refreshBtn" type="button">Refresh</button>
+      </div>
+      <p id="lastUpdated" class="statusMuted">Not checked yet.</p>
+      <div id="statusGrid" class="auctionGrid"></div>
+    </main>
+  </div>
+</body>
+</html>

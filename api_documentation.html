@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+</head>
+<body>
+
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="main.html">Home</a></li>
+                <li><a href="api_documentation.html">API Docs</a></li>
+                <li><a href="status.html">Hypixel Status</a></li>
+            </ul>
+        </nav>
+
+        <main class="apiDocs">
+            <h1>API Documentation</h1>
+            <p>
+                This project has two API-related parts: auction item data and server health checks.
+                If you are new to coding, the short version is: we fetch JSON, extract a few fields,
+                and display the result in cards.
+            </p>
+
+            <section class="apiSection">
+                <h2>1) Auction Data (Main Page)</h2>
+                <p>
+                    Endpoint used: <span class="apiCode">GET https://api.hypixel.net/v2/skyblock/auctions_ended</span><br>
+                    Used by: <span class="apiCode">main.html + script.js</span>
+                </p>
+                <p>
+                    Beginner explanation: this endpoint returns ended SkyBlock auctions.
+                    For each auction, we decode the item data and show the item name, lore, and final price.
+                </p>
+                <p>
+                    Technical details:
+                </p>
+                <ul>
+                    <li><span class="apiCode">auctions[]</span>: list of auction objects</li>
+                    <li><span class="apiCode">item_bytes</span>: compressed/base64 item payload (NBT)</li>
+                    <li><span class="apiCode">price</span>: preferred final price</li>
+                    <li><span class="apiCode">highest_bid_amount</span>: fallback price</li>
+                </ul>
+            </section>
+
+            <section class="apiSection">
+                <h2>2) Minecraft Server Status</h2>
+                <p>
+                    Endpoint used: <span class="apiCode">GET https://api.mcsrvstat.us/2/mc.hypixel.net</span><br>
+                    Used by: <span class="apiCode">status.html + status.js</span>
+                </p>
+                <p>
+                    Beginner explanation: this checks whether the Hypixel Minecraft server is online,
+                    and shows player count + version info.
+                </p>
+                <p>
+                    Technical details:
+                </p>
+                <ul>
+                    <li><span class="apiCode">online</span>: server online flag</li>
+                    <li><span class="apiCode">players.online</span> and <span class="apiCode">players.max</span>: player counts</li>
+                    <li><span class="apiCode">version</span>: detected server version</li>
+                </ul>
+            </section>
+
+            <section class="apiSection">
+                <h2>Status Labels</h2>
+                <ul>
+                    <li><strong>UP</strong>: endpoint/server responded and looks healthy</li>
+                    <li><strong>DEGRADED</strong>: request succeeded but payload reports partial issue</li>
+                    <li><strong>DOWN</strong>: request failed or service is offline</li>
+                </ul>
+            </section>
+        </main>
+
+    </div>
+
+</body>
+</html>
